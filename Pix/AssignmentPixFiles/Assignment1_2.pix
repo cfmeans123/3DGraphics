@@ -1,0 +1,24 @@
+SetResolution(11, 10, 25, true)
+
+
+SetColor(1.0, 1.0, 0.5)
+DrawPixel(5, 1, 0)
+
+DrawPixel(4, 2, 0)
+DrawPixel(5, 2, 0)
+DrawPixel(6, 2, 0)
+
+DrawPixel(3, 3, 0)
+DrawPixel(4, 3, 0)
+DrawPixel(5, 3, 0)
+DrawPixel(6, 3, 0)
+DrawPixel(7, 3, 0)
+
+DrawPixel(2, 4, 0)
+DrawPixel(3, 4, 0)
+DrawPixel(4, 4, 0)
+DrawPixel(5, 4, 0)
+DrawPixel(6, 4, 0)
+DrawPixel(7, 4, 0)
+DrawPixel(8, 4, 0)
+
