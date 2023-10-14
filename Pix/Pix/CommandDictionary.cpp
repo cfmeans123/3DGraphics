@@ -2,6 +2,7 @@
 
 #include "CmdDrawPixel.h"
 #include "CmdSetResolution.h"
+#include "CmdSetColor.h"
 #include "CmdVarFloat.h"
 
 CommandDictionary* CommandDictionary::Get()
@@ -15,6 +16,8 @@ CommandDictionary::CommandDictionary()
 	// Initialize dictionary
 
 	// Setting commands
+	RegisterCommand<CmdSetColor>();
+
 	RegisterCommand<CmdSetResolution>();
 
 	// Variable commands
