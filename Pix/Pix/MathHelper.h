@@ -19,4 +19,8 @@ public:
 	static float Lerp(const float& a, const float& b, float t);
 	static Vec2 Lerp(const Vec2& a, const Vec2& b, float t);
 	static Vec3 Lerp(const Vec3& a, const Vec3& b, float t);
+
+	static bool CheckEqual(float a, float b);
+	static bool CheckEqual(const Vec2& a, const Vec2& b);
+	static bool CheckEqual(const Vec3& a, const Vec3& b);
 };

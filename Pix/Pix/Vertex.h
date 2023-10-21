@@ -17,8 +17,8 @@ inline static X::Color LerpColor(const X::Color& a, const X::Color& b, float t)
 {
 	return {
 	MathHelper::Lerp(a.r, b.r, t),
-	MathHelper::Lerp(a.b, b.b, t),
 	MathHelper::Lerp(a.g, b.g, t),
+	MathHelper::Lerp(a.b, b.b, t),
 	MathHelper::Lerp(a.a, b.a, t)
 	};
 }

@@ -1,5 +1,6 @@
 #include "CommandDictionary.h"
 
+#include "CmdSetFillMode.h"
 #include "CmdDrawPixel.h"
 #include "CmdSetResolution.h"
 #include "CmdSetColor.h"
@@ -20,7 +21,7 @@ CommandDictionary::CommandDictionary()
 
 	// Setting commands
 	RegisterCommand<CmdSetColor>();
-
+	RegisterCommand<CmdSetFillMode>();
 	RegisterCommand<CmdSetResolution>();
 
 	// Variable commands

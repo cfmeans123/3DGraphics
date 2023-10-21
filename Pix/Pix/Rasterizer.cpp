@@ -31,49 +31,57 @@ void Rasterizer::DrawPoint(const Vertex& v)
 void Rasterizer::DrawLine(const Vertex& v0, const Vertex& v1)
 {
 
-	float dx = v1.position.x - v0.position.x;
-	float dy = v1.position.y - v0.position.y;
-
-	//normal slope lerp
-	Vertex startV, endV;
-	if (std::abs(dy) < std::abs(dx))
+	if (MathHelper::CheckEqual(v0.position, v1.position))
 	{
-		if (v0.position.x < v1.position.x)
-		{
-			startV = v0;
-			endV = v1;
-		}
-		else
-		{
-			startV = v1;
-			endV = v0;
-		}
-		for (float x = startV.position.x; x <= endV.position.x; ++x)
-		{
-			float t = (x - startV.position.x) / (endV.position.x - startV.position.x);
-			Vertex v = LerpVertex(startV, endV, t);
-			DrawPoint(v);
-		}
+		DrawPoint(v0);
 	}
 	else
 	{
-		if (v0.position.y < v1.position.y)
+		float dx = v1.position.x - v0.position.x;
+		float dy = v1.position.y - v0.position.y;
+
+		//normal slope lerp
+		Vertex startV, endV;
+		if (std::abs(dy) < std::abs(dx))
 		{
-			startV = v0;
-			endV = v1;
+			if (v0.position.x < v1.position.x)
+			{
+				startV = v0;
+				endV = v1;
+			}
+			else
+			{
+				startV = v1;
+				endV = v0;
+			}
+			for (float x = std::floor(startV.position.x); x <= std::floor(endV.position.x + 0.5f); ++x)
+			{
+				float t = (x - startV.position.x) / (endV.position.x - startV.position.x);
+				Vertex v = LerpVertex(startV, endV, t);
+				DrawPoint(v);
+			}
 		}
 		else
 		{
-			startV = v1;
-			endV = v0;
-		}
-		for (float y = startV.position.y; y <= endV.position.y; ++y)
-		{
-			float t = (y - startV.position.y) / (endV.position.y - startV.position.y);
-			Vertex v = LerpVertex(startV, endV, t);
-			DrawPoint(v);
+			if (v0.position.y < v1.position.y)
+			{
+				startV = v0;
+				endV = v1;
+			}
+			else
+			{
+				startV = v1;
+				endV = v0;
+			}
+			for (float y = startV.position.y; y <= endV.position.y; ++y)
+			{
+				float t = (y - startV.position.y) / (endV.position.y - startV.position.y);
+				Vertex v = LerpVertex(startV, endV, t);
+				DrawPoint(v);
+			}
 		}
 	}
+	
 
 
 }
@@ -91,13 +99,7 @@ void Rasterizer::DrawTriangle(const Vertex& v0, const Vertex& v1, const Vertex& 
 		break;
 		case FillMode::Solid:
 		{
-			std::vector<Vertex> sortedVertices = { v0, v1, v2 };
-			std::sort(sortedVertices.begin(), sortedVertices.end(),
-				[](const Vertex& lhs, const Vertex& rhs)
-				{
-					return lhs.position.y < rhs.position.y;
-				});
-			DrawFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
+			DrawFilledTriangle(v0, v1, v2);
 		}
 		break;
 
@@ -108,41 +110,75 @@ void Rasterizer::DrawTriangle(const Vertex& v0, const Vertex& v1, const Vertex& 
 
 void Rasterizer::DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
 {
-	float t = (v1.position.y - v0.position.y) / (v2.position.y - v0.position.y);
-	//Vec3 splitVertex = MathHelper::Lerp(v0.position, v2.position, t);
-	Vertex leftVertex;
-	Vertex rightVertex;
-
-	for (size_t i = v0.position.y; i < v2.position.y; ++i)
+	std::vector<Vertex> sortedVertices = { v0, v1, v2 };
+	std::sort(sortedVertices.begin(), sortedVertices.end(),
+		[](const Vertex& lhs, const Vertex& rhs)
+		{
+			return lhs.position.y < rhs.position.y;
+		});
+	if (MathHelper::CheckEqual(sortedVertices[0].position.y, sortedVertices[1].position.y))
 	{
-		leftVertex.position = MathHelper::Lerp(v0.position, v2.position, t);
-		rightVertex.position = MathHelper::Lerp(v1.position, v2.position, t);
-		DrawLine(leftVertex, rightVertex);
-		t = (v1.position.y - v0.position.y) / (v2.position.y - v0.position.y);
+		DrawTopFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
 	}
-
+	else if (MathHelper::CheckEqual(sortedVertices[1].position.y, sortedVertices[2].position.y))
+	{
+		DrawBottomFilledTriangle(sortedVertices[0], sortedVertices[1], sortedVertices[2]);
+	}
+	else
+	{
+		float t = (sortedVertices[1].position.y - sortedVertices[0].position.y) / (sortedVertices[2].position.y - sortedVertices[0].position.y);
+		Vertex splitVertex = LerpVertex(sortedVertices[0], sortedVertices[2], t);
+		//Bottom
+		DrawBottomFilledTriangle(sortedVertices[0], sortedVertices[1], splitVertex);
+		DrawTopFilledTriangle(sortedVertices[1], splitVertex, sortedVertices[2]);
+	}
 }
 
+void Rasterizer::DrawTopFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
+{
+	Vertex topLeft, topRight;
+	if (v0.position.x < v1.position.x)
+	{
+		topLeft = v0;
+		topRight = v1;
+	}
+	else
+	{
+		topLeft = v1;
+		topRight = v0;
+	}
 
-//DrawTriangleFilled(Vertex a, Vertex b, Vertex c)
-//Order vertices from top to bottom
-//If we don’t have a flat edge
-//Find splitVertex
-//DrawTriangleFilled(a, splitVertex, b)
-//DrawTriangleFilled(b, splitVertex, c)
-//Else
-//...
-//Pseudo Code(continued)
-//DrawTriangleFilled(Vertex a, Vertex b, Vertex c)
-//...
-//Else
-//If top is flat
-//For(rows in y)
-//leftVertex = Lerp(leftTop, bottom, t)
-//rightVertex = Lerp(rightTop, bottom, t)
-//DrawLine(leftVertex, rightVertex)
-//Else
-//For(rows in y)
-//leftVertex = Lerp(top, leftBottom, t)
-//rightVertex = Lerp(top, rightBottom, t)
-//DrawLine(leftVertex, rightVertex)
+	float dy = v2.position.y - v0.position.y;
+	for (float y = v0.position.y; y <= v2.position.y; ++y)
+	{
+		float t = (y - v0.position.y) / dy;
+		Vertex leftVertex = LerpVertex(topLeft, v2, t);
+		Vertex rightVertex = LerpVertex(topRight, v2, t);
+		DrawLine(leftVertex, rightVertex);
+	}
+}
+
+void Rasterizer::DrawBottomFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
+{
+	Vertex bottomLeft, bottomRight;
+	if (v1.position.x < v2.position.x)
+	{
+		bottomLeft = v1;
+		bottomRight = v2;
+	}
+	else
+	{
+		bottomLeft = v2;
+		bottomRight = v1;
+	}
+
+	float dy = v2.position.y - v0.position.y;
+	for (float y = v0.position.y; y <= v2.position.y; ++y)
+	{
+		float t = (y - v0.position.y) / dy;
+		Vertex leftVertex = LerpVertex(v0, bottomLeft, t);
+		Vertex rightVertex = LerpVertex(v0, bottomRight, t);
+		DrawLine(leftVertex, rightVertex);
+	}
+}
+
