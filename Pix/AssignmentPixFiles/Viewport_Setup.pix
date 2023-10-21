@@ -1,0 +1,32 @@
+SetResolution(50, 50, 10, true)
+SetViewport(10, 10, 30, 30)
+ShowViewport(true)
+//SetClipping(true)
+
+BeginDraw(point)
+Vertex(10, 10, 1, 0, 0)
+Vertex(40, 40, 1, 0, 0)
+EndDraw()
+
+BeginDraw(point)
+Vertex(7, 4, 1, 1, 0)
+Vertex(15, 20, 0, 0, 1)
+EndDraw()
+
+BeginDraw(line)
+Vertex(5, 20, 1, 0, 0)
+Vertex(23, 25, 0, 1, 0)
+
+Vertex(15, 5, 0.5, 1, 0.5)
+Vertex(45, 20, 1, 1, 0)
+
+Vertex(45, 27, 0.25, 0.75, 1)
+Vertex(42, 45, 1, 0, 0)
+
+
+
+EndDraw()
+
+
+
+

@@ -1,5 +1,8 @@
 #include "CommandDictionary.h"
 
+#include "CmdSetClipping.h"
+#include "CmdShowViewport.h"
+#include "CmdSetViewport.h"
 #include "CmdSetFillMode.h"
 #include "CmdDrawPixel.h"
 #include "CmdSetResolution.h"
@@ -20,6 +23,9 @@ CommandDictionary::CommandDictionary()
 	// Initialize dictionary
 
 	// Setting commands
+	RegisterCommand<CmdSetClipping>();
+	RegisterCommand<CmdSetViewport>();
+	RegisterCommand<CmdShowViewport>();
 	RegisterCommand<CmdSetColor>();
 	RegisterCommand<CmdSetFillMode>();
 	RegisterCommand<CmdSetResolution>();
