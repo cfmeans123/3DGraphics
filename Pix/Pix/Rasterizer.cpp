@@ -108,5 +108,41 @@ void Rasterizer::DrawTriangle(const Vertex& v0, const Vertex& v1, const Vertex& 
 
 void Rasterizer::DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
 {
+	float t = (v1.position.y - v0.position.y) / (v2.position.y - v0.position.y);
+	//Vec3 splitVertex = MathHelper::Lerp(v0.position, v2.position, t);
+	Vertex leftVertex;
+	Vertex rightVertex;
+
+	for (size_t i = v0.position.y; i < v2.position.y; ++i)
+	{
+		leftVertex.position = MathHelper::Lerp(v0.position, v2.position, t);
+		rightVertex.position = MathHelper::Lerp(v1.position, v2.position, t);
+		DrawLine(leftVertex, rightVertex);
+		t = (v1.position.y - v0.position.y) / (v2.position.y - v0.position.y);
+	}
 
 }
+
+
+//DrawTriangleFilled(Vertex a, Vertex b, Vertex c)
+//Order vertices from top to bottom
+//If we don’t have a flat edge
+//Find splitVertex
+//DrawTriangleFilled(a, splitVertex, b)
+//DrawTriangleFilled(b, splitVertex, c)
+//Else
+//...
+//Pseudo Code(continued)
+//DrawTriangleFilled(Vertex a, Vertex b, Vertex c)
+//...
+//Else
+//If top is flat
+//For(rows in y)
+//leftVertex = Lerp(leftTop, bottom, t)
+//rightVertex = Lerp(rightTop, bottom, t)
+//DrawLine(leftVertex, rightVertex)
+//Else
+//For(rows in y)
+//leftVertex = Lerp(top, leftBottom, t)
+//rightVertex = Lerp(top, rightBottom, t)
+//DrawLine(leftVertex, rightVertex)

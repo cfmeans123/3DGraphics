@@ -30,5 +30,5 @@ private:
 	void DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2);
 
 	X::Color mColor = X::Colors::White;
-	FillMode mFillMode = FillMode::WireFrame;
+	FillMode mFillMode = FillMode::Solid;
 };
