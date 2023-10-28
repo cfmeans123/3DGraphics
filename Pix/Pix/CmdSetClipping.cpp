@@ -9,6 +9,6 @@ bool CmdSetClipping::Execute(const std::vector<std::string>& params)
 		return false;
 	}
 	bool clip = params[0] == "true";
-	Clipper::Get()->SetClipping(true);
+	Clipper::Get()->SetClipping(clip);
 	return true;
 }

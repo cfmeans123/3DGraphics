@@ -1,7 +1,7 @@
 SetResolution(50, 50, 10, true)
 SetViewport(10, 10, 30, 30)
 ShowViewport(true)
-//SetClipping(true)
+SetClipping(true)
 
 BeginDraw(point)
 Vertex(10, 10, 1, 0, 0)
@@ -23,10 +23,16 @@ Vertex(45, 20, 1, 1, 0)
 Vertex(45, 27, 0.25, 0.75, 1)
 Vertex(42, 45, 1, 0, 0)
 
-
-
 EndDraw()
 
+BeginDraw(triangle)
+Vertex(15, 25, 1, 1, 0)
+Vertex(25, 43, 0, 1, 1)
+Vertex(5, 43, 1, 0, 1)
 
+Vertex(30, 20, 1, 0, 0)
+Vertex(40, 25, 0, 1, 0)
+Vertex(35, 33, 0, 0, 1)
+EndDraw()
 
 
