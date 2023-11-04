@@ -1,11 +1,27 @@
 ﻿  AudioEngine.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   DynamicSoundEffectInstance.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   SoundCommon.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   SoundEffect.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   SoundEffectInstance.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   SoundStreamInstance.cpp
-  WAVFileReader.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   WaveBank.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
   WaveBankReader.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,85): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\x3daudio.h(164,97): warning C5246: 'X3DAudioDefault_LinearCurvePoints': the initialization of a subobject should be wrapped in braces
+  WAVFileReader.cpp
   Generating Code...
   DirectXTKAudio_Desktop_2019_Win8.vcxproj -> C:\Users\lcv0278187\Documents\GitHub\3DGraphics\Pix\X\External\DirectXTK\Audio\Bin\Desktop_2019\x64\Debug\DirectXTKAudioWin8.lib
