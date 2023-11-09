@@ -11,6 +11,17 @@
 #include "CmdBeginDraw.h"
 #include "CmdAddVertex.h"
 #include "CmdEndDraw.h"
+#include "CmdPushTranslation.h"
+#include "CmdPushRotationX.h"
+#include "CmdPushRotationY.h"
+#include "CmdPushRotationZ.h"
+#include "CmdPopMatrix.h"
+#include "CmdPushScaling.h"
+#include "CmdSetCameraPosition.h"
+#include "CmdSetCameraDirection.h"
+#include "CmdSetCameraFOV.h"
+#include "CmdSetCameraNear.h"
+#include "CmdSetCameraFar.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -29,9 +40,22 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetColor>();
 	RegisterCommand<CmdSetFillMode>();
 	RegisterCommand<CmdSetResolution>();
+	
+	//Camera commands
+	RegisterCommand<CmdSetCameraPosition>();
+	RegisterCommand<CmdSetCameraDirection>();
+	RegisterCommand<CmdSetCameraFOV>();
+	RegisterCommand<CmdSetCameraNear>();
+	RegisterCommand<CmdSetCameraFar>();
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
+	RegisterCommand<CmdPushTranslation>();
+	RegisterCommand<CmdPushScaling>();
+	RegisterCommand<CmdPushRotationX>();
+	RegisterCommand<CmdPushRotationY>();
+	RegisterCommand<CmdPushRotationZ>();
+	RegisterCommand<CmdPopMatrix>();
 
 	// Rasterization commands
 	RegisterCommand<CmdDrawPixel>();
