@@ -23,7 +23,7 @@ struct Matrix4
 		
 	}
 
-	Matrix4 operator+(const Matrix4& rhs)
+	Matrix4 operator+(const Matrix4& rhs) const
 	{
 		return Matrix4(
 			_11 + rhs._11, _12 + rhs._12, _13 + rhs._13, _14 + rhs._14,
@@ -32,7 +32,7 @@ struct Matrix4
 			_41 + rhs._41, _42 + rhs._42, _43 + rhs._43, _44 + rhs._44
 		);
 	}
-	Matrix4 operator*(float s)
+	Matrix4 operator*(float s) const
 	{
 		return Matrix4(
 			_11 * s, _12 * s, _13 * s, _14 * s,
@@ -41,7 +41,7 @@ struct Matrix4
 			_41 * s, _42 * s, _43 * s, _44 * s
 		);
 	}
-	Matrix4 operator*(const Matrix4& rhs)
+	Matrix4 operator*(const Matrix4& rhs) const
 	{
 		return Matrix4(
 		(_11 * rhs._11) + (_12 * rhs._21) + (_13 * rhs._31) + (_14 * rhs._41),

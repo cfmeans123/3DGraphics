@@ -10,10 +10,10 @@ float $camDirX = 0
 float $camDirY = 0
 float $camDirZ = 1
 
-float $rotX = 0
-float $rotY = 0
+float $rotX = 0 5
+float $rotY = 0 5
 //default value
-float $rotZ = -30
+float $rotZ = -30 5
 
 SetCameraPosition($camX, $camY, $camZ)
 SetCameraDirection($camDirX, $camDirY, $camDirZ)
@@ -43,6 +43,7 @@ Vertex(1, 1, 1, 1, 1, 0)
 Vertex(1, -1, 1, 1, 1, 0)
 
 EndDraw()
+
 
 
 

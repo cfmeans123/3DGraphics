@@ -1,2 +1,3 @@
-﻿  CmdBeginDraw.cpp
-  Pix.vcxproj -> C:\Users\chand\OneDrive\Documents\GitHub\3DGraphics\Pix\x64\Debug\Pix.exe
+﻿  PrimitivesManager.cpp
+C:\Users\lcv0278187\Documents\GitHub\3DGraphics\Pix\Pix\PrimitivesManager.cpp(163): warning C4715: 'PrimitivesManager::EndDraw': not all control paths return a value
+  Pix.vcxproj -> C:\Users\lcv0278187\Documents\GitHub\3DGraphics\Pix\x64\Debug\Pix.exe

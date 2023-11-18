@@ -5,12 +5,17 @@
 struct Vertex
 {
 	Vec3 position;
+	Vec3 normal;
 	X::Color color;
 };
 
 inline static Vec3 LerpPosition(const Vec3& a, const Vec3& b, float t)
 {
 	return MathHelper::Lerp(a, b, t);
+}
+inline static Vec3 LerpNormal(const Vec3& a, const Vec3& b, float t)
+{
+	return MathHelper::Normalize(MathHelper::Lerp(a, b, t));
 }
 
 inline static X::Color LerpColor(const X::Color& a, const X::Color& b, float t)
@@ -28,5 +33,6 @@ inline static Vertex LerpVertex(const Vertex& a, const Vertex& b, float t)
 	Vertex ret;
 	ret.position = LerpPosition(a.position, b.position, t);
 	ret.color = LerpColor(a.color, b.color, t);
+	ret.normal = LerpNormal(a.normal, b.normal, t);
 	return ret;
 }
