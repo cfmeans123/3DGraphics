@@ -23,8 +23,8 @@ bool $correctUV = false
 SetCameraPosition($camX, $camY, $camZ)
 SetCameraDirection($camDirX, $camDirY, $camDirZ)
 
-SetTexture(../Images/checker.bmp)
-//SetTexture(../Images/sponge_bob.bmp)
+//SetTexture(../Images/checker.bmp)
+SetTexture(../Images/sponge_bob.bmp)
 //SetTexture(../Images/crate.bmp)
 //SetTexture(../Images/cat.bmp)
 
@@ -34,17 +34,20 @@ PushRotationY($rotY)
 PushRotationX($rotX)
 
 SetCorrectUV($correctUV)
+SetUseFilter(true)
+SetAddressMode(mirror)
 
 BeginDraw(triangle, true)
 
-Vertex(-1, -1, 0, 0, 1, -1)
+Vertex(-1, -1, 0, 0, 3, -1)
 Vertex(-1, 1, 0, 0, 0, -1)
-Vertex(1, 1, 0, 1, 0, -1)
-Vertex(-1, -1, 0, 0, 1, -1)
-Vertex(1, 1, 0, 1, 0, -1)
-Vertex(1, -1, 0, 1, 1, -1)
+Vertex(1, 1, 0, 3, 0, -1)
+Vertex(-1, -1, 0, 0, 3, -1)
+Vertex(1, 1, 0, 3, 0, -1)
+Vertex(1, -1, 0, 3, 3, -1)
 
 EndDraw()
+
 
 
 
