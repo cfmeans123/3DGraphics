@@ -92,6 +92,13 @@ const std::string& Texture::GetFileName() const
     return mFileName;
 }
 
+X::Color Texture::GetPixel(float u, float v) const
+{
+    int uIndex = static_cast<int>(u * (mWidth - 1));
+    int vIndex = static_cast<int>(v * (mHeight - 1));
+    return GetPixel(uIndex, vIndex);
+}
+
 X::Color Texture::GetPixel(int x, int y) const
 {
     x = std::clamp(x, 0, mWidth - 1);
@@ -99,12 +106,6 @@ X::Color Texture::GetPixel(int x, int y) const
     return mPixels[x + (y * mWidth)];
 }
 
-X::Color Texture::GetPixel(float u, float v) const
-{
-    int uIndex = static_cast<int>(u * (mWidth - 1) + 0.5f);
-    int vIndex = static_cast<int>(v * (mHeight - 1) + 0.5f);
-    return GetPixel(uIndex, vIndex);
-}
 
 int Texture::GetWidth() const
 {
