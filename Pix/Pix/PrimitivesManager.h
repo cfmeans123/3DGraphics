@@ -21,11 +21,11 @@ class PrimitivesManager
 {
 public: 
 	~PrimitivesManager();
+	static PrimitivesManager* Get();
 
 	void OnNewFrame();
 	void SetCullMode(CullMode mode);
-
-	static PrimitivesManager* Get();
+	void SetCorrectUV(bool correct);
 
 	bool BeginDraw(Topology topology, bool applyTransform = false);
 	void AddVertex(const Vertex& vertex);
@@ -36,6 +36,7 @@ private:
 	std::vector<Vertex> mVertexBuffer;
 	Topology mTopology = Topology::Point;
 	CullMode mCullMode = CullMode::Back;
-	bool mDrawBegin = false;
+	bool mBeginDraw = false;
 	bool mApplyTransform = false;
+	bool mCorrectUV = false;
 };

@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Command.h"
 
 class CmdPopMatrix : public Command
@@ -7,15 +6,15 @@ class CmdPopMatrix : public Command
 public:
 	const char* GetName() override
 	{
-		return "CmdPopMatrix";
+		return "PopMatrix";
 	}
 
 	const char* GetDescription() override
 	{
 		return
-			"CmdPopMatrix(X, Y, Z)\n"
+			"PopMatrix()\n"
 			"\n"
-			"- Pops Matrix.";
+			"- Pops matrix from Stack.";
 	}
 
 	bool Execute(const std::vector<std::string>& params) override;

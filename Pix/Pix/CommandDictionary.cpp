@@ -24,6 +24,14 @@
 #include "CmdSetCameraFar.h"
 #include "CmdSetCullMode.h"
 #include "CmdEnableDepth.h"
+#include "CmdLights.h"
+#include "CmdMaterials.h"
+#include "CmdModels.h"
+#include "CmdSetShading.h"
+#include "CmdSetTexture.h"
+#include "CmdSetCorrectUV.h"
+#include "CmdVarBool.h"
+
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -66,6 +74,27 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdBeginDraw>();
 	RegisterCommand<CmdAddVertex>();
 	RegisterCommand<CmdEndDraw>();
+
+	// Light commands
+	RegisterCommand<CmdSetLightDiffuse>();
+	RegisterCommand<CmdSetLightAmbient>();
+	RegisterCommand<CmdSetLightSpecular>();
+	RegisterCommand<CmdSetDirectionalLight>();
+	RegisterCommand<CmdSetPointLight>();
+	RegisterCommand<CmdSpotLight>();
+
+	// Material commands
+	RegisterCommand<CmdSetMaterialDiffuse>();
+	RegisterCommand<CmdSetMaterialAmbient>();
+	RegisterCommand<CmdSetMaterialSpecular>();
+	RegisterCommand<CmdSetMaterialShininess>();
+
+	// Other Commands
+	RegisterCommand<CmdModels>();
+	RegisterCommand<CmdSetShading>();
+	RegisterCommand<CmdSetTexture>();
+	RegisterCommand<CmdSetCorrectUV>();
+
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()

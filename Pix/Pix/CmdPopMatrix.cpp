@@ -4,7 +4,6 @@
 
 bool CmdPopMatrix::Execute(const std::vector<std::string>& params)
 {
-
-    MatrixStack::Get()->PopMatrix();
-    return true;
+	MatrixStack::Get()->PopMatrix();
+	return true;
 }

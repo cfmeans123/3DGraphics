@@ -38,7 +38,7 @@ bool DepthBuffer::CheckDepthBuffer(int x, int y, float depth)
 		return true;
 	}
 	if (x >= 0 && x < mWidth && 
-		y >= 0 && y < mHeight)
+		y >= 0 && y <= mHeight)
 	{
 		const int index = x + (y * mWidth);
 		if (depth <= mDepthBuffer[index])
